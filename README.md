@@ -1,6 +1,10 @@
-# FundosOrama
+# FundosOrama: um projeto para o processo seletivo de desenvolvedor front-end para a Órama
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.10.
+This project was generated with:
+  [Angular CLI](https://github.com/angular/angular-cli) version 7.3.10
+  [Foundations for sites] (https://github.com/foundation/foundation-sites) version 6.6.3
+  [ngx-foudation] (https://github.com/nthompson777/ngx-foundation) version 1.0.8
+  [Angular Material] (https://github.com/angular/components) version 7.3.7
 
 ## Development server
 
