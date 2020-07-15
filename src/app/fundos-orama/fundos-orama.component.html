@@ -1,8 +1,8 @@
 <div class="grid-x orama-body orama-div-h">
   <div class="large-12 medium-12 small-12 orama-header">
     <div class="cell orama-text-header">
-      <p class="h2">FUNDOS DE INVESTIMENTO <br>
-        <small class="padding-top-0">Conheça nossa lista de fundos</small>
+      <p class="h2">FUNDOS DE INVESTIMENTO<br>
+        <small class="padding-top-0 margin-top-0">Conheça nossa lista de fundos</small>
       </p>
     </div>
   </div>
@@ -15,10 +15,15 @@
       <div class="card">
         <div class="float-left padding-1"><strong>LEGENDA</strong></div>
         <div class="grid-x grid-padding-x padding-bottom-1">
-          <div class="cell small-3"><i class="material-icons md-12 icon-green">&#xe8d0;</i>Fundo para investidor qualificado</div>
-          <div class="cell small-3"><i class="material-icons md-12 icon-blue">&#xe88f;</i>Entenda o resgate deste fundo</div>
-          <div class="cell small-3"><i class="material-icons md-12 icon-gray">&#xe612;</i>Fundo fechado para aplicação</div>
-          <div class="cell small-3"><i class="material-icons md-12 icon-red">&#xe80e;</i>Aplicar neste fundo</div>
+          <div class="cell small-2"><i class="material-icons md-12 icon-gold">&#xe8d0;</i>Fundo para investidor
+            qualificado</div>
+          <div class="cell small-2"><i class="material-icons md-12 icon-cyan">&#xe88f;</i>Entenda o resgate deste fundo
+          </div>
+          <div class="cell small-2"><i class="material-icons md-12 icon-blue">&#xe862;</i>Fundo aberto para aplicação
+          </div>
+          <div class="cell small-2"><i class="material-icons md-12 icon-gray">&#xe612;</i>Fundo fechado para aplicação
+          </div>
+          <div class="cell small-2"><i class="material-icons md-12 icon-red">&#xe80e;</i>Aplicar neste fundo</div>
         </div>
       </div>
     </div>
@@ -40,6 +45,7 @@
     <table class="orama-table">
       <thead>
         <tr>
+          <th></th>
           <th class="padding-left-1" width="300">Fundo</th>
           <th class="padding-0 text-center" width="100">Data da cota</th>
           <th class="padding-0 text-right" colspan="3">------------------------------------ Rentabilidade(%)</th>
@@ -48,7 +54,7 @@
           <th class="padding-0 text-center">Aplicar</th>
         </tr>
         <tr>
-          <th class="padding-0" colspan="2"></th>
+          <th class="padding-0" colspan="3"></th>
           <th class="padding-0 text-right">Mês</th>
           <th class="padding-0 text-right">2020</th>
           <th class="padding-0 text-right">12M</th>
@@ -57,10 +63,20 @@
       </thead>
       <tbody *ngFor="let dados of listaFundos">
         <tr [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
+          <td id="indicadoresFundos">
+            <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '1'">
+              <i class="material-icons md-12 icon-blue has-tip" tooltip="Fundo aberto para aplicação." placement="right">&#xe862;</i></p>
+            <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '3'">
+              <i class="material-icons md-12 icon-gray has-tip" tooltip="Fundo fechado para aplicação." placement="right">&#xe612;</i></p>
+            <p class="padding-0 margin-0 text-center"
+              *ngIf="dados.description.target_audience === 'Investidores Qualificados'">
+              <i class="material-icons md-12 icon-gold has-tip" tooltip="Fundo para investidor qualificado." placement="right">&#xe8d0;</i></p>
+          </td>
+
           <td width="300">
-            <p>{{dados.specification.fund_suitability_profile.score_range_order}}
+            <!-- <p>{{dados.specification.fund_suitability_profile.score_range_order}}
               - {{dados.specification.fund_suitability_profile.name}}
-            </p>
+            </p> -->
             <p class="padding-top-0">{{dados.simple_name}}<br>
               <small>{{dados.specification.fund_macro_strategy.name}} |
                 {{dados.specification.fund_main_strategy.name}}</small>
@@ -71,11 +87,11 @@
           <td class="text-right">{{dados.profitabilities.year}}</td>
           <td class="text-right">{{dados.profitabilities.m12}}</td>
           <td class="text-right" width="100">{{dados.operability.minimum_initial_application_amount}}</td>
-          <td class="text-right" width="100">{{dados.operability.retrieval_quotation_days_str}}</td>
-          <td class="text-center"><i class="material-icons padding-right-1 icon-red">&#xe80e;</i></td>
+          <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip" [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
+          <td class="text-right"><i class="material-icons padding-right-1 icon-red">&#xe80e;</i></td>
         </tr>
-        <tr id="collapse" class="fundos">
-          <td colspan="8" class="margin-0 padding-0">
+        <tr id="collapse" [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
+          <td colspan="9" class="margin-0 padding-0">
             <mat-accordion>
               <mat-expansion-panel hideToggle>
                 <mat-expansion-panel-header>
@@ -112,35 +128,39 @@
   </div>
   <div class="large-3 medium-3 small-12 columns padding-right-1 padding-top-1">
     <div class="card">
+      <div class="card-section">
+        <ul>
+          <li>
+            <mat-checkbox color="primary"> <strong>RENDA FIXA</strong></mat-checkbox>
+          </li>
+        </ul>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="card-section">
       <span>
         <ul>
           <li>
-            <mat-checkbox color="primary">RENDA FIXA</mat-checkbox>
+            <mat-checkbox color="primary">Indexado Soberano</mat-checkbox>
           </li>
           <li>
-            <mat-checkbox color="primary">RENDA VARIAVEL</mat-checkbox>
+            <mat-checkbox color="primary">Renda Fixa</mat-checkbox>
           </li>
           <li>
-            <mat-checkbox color="primary">BLAH</mat-checkbox>
+            <mat-checkbox color="primary">Renda Fixa Crédito Privado</mat-checkbox>
           </li>
           <li>
-            <mat-checkbox color="primary">BLAH</mat-checkbox>
+            <mat-checkbox color="primary">Crédito Privado High Yield</mat-checkbox>
           </li>
           <li>
-            <mat-checkbox color="primary">BLAH</mat-checkbox>
+            <mat-checkbox color="primary">Renda Fixa Inflação Soberano
+              </mat-checkbox>
           </li>
           <li>
-            <mat-checkbox color="primary">BLAH</mat-checkbox>
+            <mat-checkbox color="primary">Inflação Crédito Privado</mat-checkbox>
           </li>
-          <li>
-            <mat-checkbox color="primary">BLAH</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">BLAH</mat-checkbox>
-          </li>
-
         </ul>
       </span>
+    </div>
     </div>
   </div>
 </div>

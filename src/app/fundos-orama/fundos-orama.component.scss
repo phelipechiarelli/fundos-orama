@@ -1,15 +1,13 @@
 $card-color: #F8F8FF; // ghostWhite
 $table-hover: #d4ebfa; // azure 
-$table-header: #F8F8FF; // ghostWhite
-$table-body: #F8F8FF; // ghostWhite
+$table-header: #FFF; // White
+$table-body: #FFF; // White
 $div-body: #DCDCDC; //gainsboro
-$icon-palette: (
-    icon-black: #000000,
-    icon-red: #ff0000,
-    icon-green: #006400,
-    icon-blue: #0000CD,
-    icon-gray: #babaca
-) !default;
+$icon-palette: (icon-black: #000000,
+  icon-red: #ff0000,
+  icon-green: #006400,
+  icon-blue: #0000CD,
+  icon-gray: #babaca) !default;
 
 h1,
 h2,
@@ -18,12 +16,29 @@ h3 {
 }
 
 
-  .icon-black{ color: #000  };
-  .icon-red {  color: #ff0000 };
-  .icon-green{ color: #006400 };
-  .icon-blue{ color: #0000CD};
-  .icon-gray{ color: #babaca};
+.icon-gold {
+  color: #DAA520;
+}
 
+.icon-red {
+  color: #ff0000;
+}
+
+.icon-green {
+  color: #006400;
+}
+
+.icon-blue {
+  color: #0052cd;
+}
+
+.icon-cyan {
+  color: #00BFFF;
+}
+
+.icon-gray {
+  color: #708090;
+}
 
 p {
   font-family: 'Questrial', sans-serif;
@@ -115,14 +130,24 @@ div>div {
 }
 
 .orama-table {
-  font-size: 12px !important;
-  border: 1px solid $table-header;
+  font-size: 13px !important;
+  // border: 1px solid $table-body;
   padding: 3px;
   font-family: 'Questrial', sans-serif;
   border-left-width: 7px;
 
+  table {
+
+    tr,
+    td
+      {
+      background-color: $table-body !important;
+    }
+  }
+
+
   thead {
-    background-color: $table-header;
+    background-color: $table-header !important;
     font-weight: bolder;
 
     tr {
@@ -140,12 +165,18 @@ div>div {
 
   #collapse {
     td {
-      background-color: $table-hover !important;
+      background-color: $table-body !important;
     }
 
     &:hover {
       background-color: $table-hover;
     }
+  }
+}
+
+#indicadoresFundos {
+  p>i {
+    font-size: 20px;
   }
 }
 

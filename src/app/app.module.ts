@@ -28,6 +28,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     MatInputModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
