@@ -1,8 +1,8 @@
 <div class="grid-x orama-body orama-div-h">
   <div class="large-12 medium-12 small-12 orama-header">
-    <div class="cell orama-text-header">
-      <p class="h2">FUNDOS DE INVESTIMENTO<br>
-        <small class="padding-top-0 margin-top-0">Conheça nossa lista de fundos</small>
+    <div class="cell orama-text-header orama-text-header_mobile">
+      <p class="margin-0">FUNDOS DE INVESTIMENTO<br>
+        <small class="margin-0 padding-top-0">Conheça nossa lista de fundos</small>
       </p>
     </div>
   </div>
@@ -11,19 +11,56 @@
 <div class="grid-x orama-body">
   <div class="large-9 medium-9 small-12 columns padding-1">
 
-    <div class="large-12 medium-12 small-12 columns">
+    <div class="large-12 medium-12 small-12 columns hide-mobile">
       <div class="card">
         <div class="float-left padding-1"><strong>LEGENDA</strong></div>
         <div class="grid-x grid-padding-x padding-bottom-1">
-          <div class="cell small-2"><i class="material-icons md-12 icon-gold">&#xe8d0;</i>Fundo para investidor
-            qualificado</div>
-          <div class="cell small-2"><i class="material-icons md-12 icon-cyan">&#xe88f;</i>Entenda o resgate deste fundo
+          <div class="cell small-4 legenda flex-container"><i
+              class="material-icons md-12 icon-gold padding-right-1">&#xe8d0;</i>
+            <span class="flex-dir-row align-self-middle">Fundo para investidor qualificado</span>
           </div>
-          <div class="cell small-2"><i class="material-icons md-12 icon-blue">&#xe862;</i>Fundo aberto para aplicação
+          <div class="cell small-4 legenda flex-container"><i
+              class="material-icons md-12 icon-cyan padding-right-1">&#xe88f;</i>
+            <span class="flex-dir-row align-self-middle">Entenda o resgate deste fundo</span>
           </div>
-          <div class="cell small-2"><i class="material-icons md-12 icon-gray">&#xe612;</i>Fundo fechado para aplicação
+          <div class="cell small-4 legenda flex-container"><i
+              class="material-icons md-12 icon-green padding-right-1">&#xe862;</i>
+            <span class="flex-dir-row align-self-middle">Fundo aberto para aplicação</span>
           </div>
-          <div class="cell small-2"><i class="material-icons md-12 icon-red">&#xe80e;</i>Aplicar neste fundo</div>
+          <div class="cell small-4 legenda flex-container"><i
+              class="material-icons md-12 icon-gray padding-right-1">&#xe612;</i>
+            <span class="flex-dir-row align-self-middle">Fundo fechado para aplicação</span>
+          </div>
+          <div class="cell small-4 legenda flex-container"><i
+              class="material-icons md-12 icon-red padding-right-1">&#xe80e;</i>
+            <span class="flex-dir-row align-self-middle">Aplicar neste fundo</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="large-12 medium-12 small-12 columns hide-screen">
+      <div class="card">
+        <div class="float-left padding-1"><strong>LEGENDA</strong></div>
+        <div class="grid-x grid-padding-x padding-bottom-1">
+          <div class="cell small-12 legenda flex-container"><i
+              class="material-icons md-12 icon-gold padding-right-1">&#xe8d0;</i>
+            <span class="flex-dir-row align-self-middle">Fundo para investidor qualificado</span>
+          </div>
+          <div class="cell small-12 legenda flex-container"><i
+              class="material-icons md-12 icon-cyan padding-right-1">&#xe88f;</i>
+            <span class="flex-dir-row align-self-middle">Entenda o resgate deste fundo</span>
+          </div>
+          <div class="cell small-12 legenda flex-container"><i
+              class="material-icons md-12 icon-green padding-right-1">&#xe862;</i>
+            <span class="flex-dir-row align-self-middle">Fundo aberto para aplicação</span>
+          </div>
+          <div class="cell small-12 legenda flex-container"><i
+              class="material-icons md-12 icon-gray padding-right-1">&#xe612;</i>
+            <span class="flex-dir-row align-self-middle">Fundo fechado para aplicação</span>
+          </div>
+          <div class="cell small-12 legenda flex-container"><i
+              class="material-icons md-12 icon-red padding-right-1">&#xe80e;</i>
+            <span class="flex-dir-row align-self-middle">Aplicar neste fundo</span></div>
         </div>
       </div>
     </div>
@@ -40,9 +77,7 @@
       </div>
     </div>
 
-
-
-    <table class="orama-table">
+    <table class="orama-table hide-mobile">
       <thead>
         <tr>
           <th></th>
@@ -65,18 +100,18 @@
         <tr [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
           <td id="indicadoresFundos">
             <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '1'">
-              <i class="material-icons md-12 icon-blue has-tip" tooltip="Fundo aberto para aplicação." placement="right">&#xe862;</i></p>
+              <i class="material-icons md-12 icon-green has-tip" tooltip="Fundo aberto para aplicação."
+                placement="right">&#xe862;</i></p>
             <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '3'">
-              <i class="material-icons md-12 icon-gray has-tip" tooltip="Fundo fechado para aplicação." placement="right">&#xe612;</i></p>
+              <i class="material-icons md-12 icon-gray has-tip" tooltip="Fundo fechado para aplicação."
+                placement="right">&#xe612;</i></p>
             <p class="padding-0 margin-0 text-center"
               *ngIf="dados.description.target_audience === 'Investidores Qualificados'">
-              <i class="material-icons md-12 icon-gold has-tip" tooltip="Fundo para investidor qualificado." placement="right">&#xe8d0;</i></p>
+              <i class="material-icons md-12 icon-gold has-tip" tooltip="Fundo para investidor qualificado."
+                placement="right">&#xe8d0;</i></p>
           </td>
 
           <td width="300">
-            <!-- <p>{{dados.specification.fund_suitability_profile.score_range_order}}
-              - {{dados.specification.fund_suitability_profile.name}}
-            </p> -->
             <p class="padding-top-0">{{dados.simple_name}}<br>
               <small>{{dados.specification.fund_macro_strategy.name}} |
                 {{dados.specification.fund_main_strategy.name}}</small>
@@ -87,7 +122,8 @@
           <td class="text-right">{{dados.profitabilities.year}}</td>
           <td class="text-right">{{dados.profitabilities.m12}}</td>
           <td class="text-right" width="100">{{dados.operability.minimum_initial_application_amount}}</td>
-          <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip" [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
+          <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip"
+              [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
           <td class="text-right"><i class="material-icons padding-right-1 icon-red">&#xe80e;</i></td>
         </tr>
         <tr id="collapse" [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
@@ -125,8 +161,38 @@
       </tbody>
     </table>
 
+    <div class="large-12 medium-12 small-12 columns" *ngFor="let dados of listaFundos">
+      <div [ngClass]="mapperFundosRiscoMobile(dados.specification.fund_risk_profile.score_range_order)">
+        <div class="card-section">
+          <div class="grid-x grid-padding-x padding-bottom-1">
+            <div class="cell small-10 legenda flex-container">
+              <p class="padding-top-0">{{dados.simple_name}}<br>
+                <small>{{dados.specification.fund_macro_strategy.name}} |
+                  {{dados.specification.fund_main_strategy.name}}</small>
+              </p>
+            </div>
+            <div class="cell small-2 legenda flex-container">
+              <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '1'">
+                <i class="material-icons md-12 icon-green has-tip" tooltip="Fundo aberto para aplicação."
+                  placement="right">&#xe862;</i></p>
+              <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '3'">
+                <i class="material-icons md-12 icon-gray has-tip" tooltip="Fundo fechado para aplicação."
+                  placement="right">&#xe612;</i></p>
+              <p class="padding-0 margin-0 text-center"
+                *ngIf="dados.description.target_audience === 'Investidores Qualificados'">
+                <i class="material-icons md-12 icon-gold has-tip" tooltip="Fundo para investidor qualificado."
+                  placement="right">&#xe8d0;</i></p>
+            </div>
+          </div>
+          <div class="card-section"></div>
+
+        </div>
+
+      </div>
+    </div>
   </div>
-  <div class="large-3 medium-3 small-12 columns padding-right-1 padding-top-1">
+
+  <div class="large-3 medium-3 small-12 columns padding-right-1 padding-top-1 hide-mobile">
     <div class="card">
       <div class="card-section">
         <ul>
@@ -137,30 +203,30 @@
       </div>
       <mat-divider></mat-divider>
       <div class="card-section">
-      <span>
-        <ul>
-          <li>
-            <mat-checkbox color="primary">Indexado Soberano</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">Renda Fixa</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">Renda Fixa Crédito Privado</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">Crédito Privado High Yield</mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">Renda Fixa Inflação Soberano
+        <span>
+          <ul>
+            <li>
+              <mat-checkbox color="primary">Indexado Soberano</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">Renda Fixa</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">Renda Fixa Crédito Privado</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">Crédito Privado High Yield</mat-checkbox>
+            </li>
+            <li>
+              <mat-checkbox color="primary">Renda Fixa Inflação Soberano
               </mat-checkbox>
-          </li>
-          <li>
-            <mat-checkbox color="primary">Inflação Crédito Privado</mat-checkbox>
-          </li>
-        </ul>
-      </span>
-    </div>
+            </li>
+            <li>
+              <mat-checkbox color="primary">Inflação Crédito Privado</mat-checkbox>
+            </li>
+          </ul>
+        </span>
+      </div>
     </div>
   </div>
 </div>

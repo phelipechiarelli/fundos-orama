@@ -8,8 +8,9 @@ import { ListaFundosService } from 'src/services/lista-fundos.service';
 })
 export class FundosOramaComponent implements OnInit {
 
-  listaFundos: ListaFundosService;
+  listaFundos: ListaFundosService[] = [];
   err: any;
+
  
   constructor(private fundosService: ListaFundosService) {
 
@@ -18,6 +19,8 @@ export class FundosOramaComponent implements OnInit {
 
   ngOnInit() {
 
+    this.pesquisaFundos()
+
   }
 
   getListaFundos(){
@@ -25,6 +28,8 @@ export class FundosOramaComponent implements OnInit {
       (dadosFundos) => {
         this.listaFundos = dadosFundos;
         console.log(this.listaFundos);
+
+
       },
       (error: any) => {
         this.err = error;
@@ -49,6 +54,31 @@ export class FundosOramaComponent implements OnInit {
       case 12 : {return 'fundos risco-12'};
       default : {return 'fundos'};
     }
+  }
+
+  mapperFundosRiscoMobile(valor: number) {    
+    switch (valor) {
+      case 1 : {return 'card risco-mobile-1'};
+      case 2 : {return 'card risco-mobile-2'};
+      case 3 : {return 'card risco-mobile-3'};
+      case 4 : {return 'card risco-mobile-4'};
+      case 5 : {return 'card risco-mobile-5'};
+      case 6 : {return 'card risco-mobile-6'};
+      case 7 : {return 'card risco-mobile-7'};
+      case 8 : {return 'card risco-mobile-8'};
+      case 9 : {return 'card risco-mobile-9'};
+      case 10 : {return 'card risco-mobile-10'};
+      case 11 : {return 'card risco-mobile-11'};
+      case 12 : {return 'card risco-mobile-12'};
+      default : {return 'card'};
+    }
+  }
+
+  pesquisaFundos(){
+
+    // const nomeFundo = this.listaFundos.filter(nome => (nome.full_name))
+
+    // console.log(nomeFundo)
   }
 
 }
