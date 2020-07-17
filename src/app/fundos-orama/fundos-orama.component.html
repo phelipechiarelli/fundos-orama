@@ -69,7 +69,7 @@
       <div class="card">
         <mat-form-field appearance="legacy">
           <mat-label>Buscar fundo por nome</mat-label>
-          <input matInput>
+          <input name="pesquisarNome" matInput (change)="pesquisar($event)">
           <button mat-icon-button matSuffix>
             <mat-icon>search</mat-icon>
           </button>
@@ -83,7 +83,7 @@
           <th></th>
           <th class="padding-left-1" width="300">Fundo</th>
           <th class="padding-0 text-center" width="100">Data da cota</th>
-          <th class="padding-0 text-right" colspan="3">------------------------------------ Rentabilidade(%)</th>
+          <th class="padding-0 text-center" colspan="3">Rentabilidade(%)</th>
           <th class="padding-0 text-right" width="100">Aplicação mínima(R$)</th>
           <th class="padding-0 text-right" width="100">Cotização de resgate</th>
           <th class="padding-0 text-center">Aplicar</th>
@@ -124,7 +124,7 @@
           <td class="text-right" width="100">{{dados.operability.minimum_initial_application_amount}}</td>
           <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip"
               [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
-          <td class="text-right"><i class="material-icons padding-right-1 icon-red">&#xe80e;</i></td>
+          <td class="text-center"><i class="material-icons padding-right-1 icon-red">&#xe80e;</i></td>
         </tr>
         <tr id="collapse" [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
           <td colspan="9" class="margin-0 padding-0">
@@ -135,7 +135,35 @@
                     <strong>Mais detalhes sobre {{dados.simple_name}}</strong>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <table class="orama-table">
+                <div class="grid-x orama-body">
+                  <div class="large-6 medium-6 columns padding-1">
+                    <div class="card">
+                      <div class="card-section">
+                        <p>{{dados.description.strategy}}</p>
+                        <p>{{dados.description.strengths}}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="large-6 medium-6 columns padding-1">
+                                        <div class="card">
+                      <div class="card-section">
+                        <p><strong>Cotização da aplicação: </strong>{{dados.operability.application_quotation_days_str}}</p> 
+                        <p><strong>Cotização do resgate: </strong>{{dados.operability.retrieval_quotation_days_str}} (dias
+                          {{dados.operability.retrieval_quotation_days_type}})</p>
+                        <p><strong>Liquidação do resgate: </strong>{{dados.operability.retrieval_liquidation_days_str}}
+                          (dias
+                          {{dados.operability.retrieval_liquidation_days_type}})</p>
+                        <p><strong>Taxa de administração: </strong>{{dados.fees.administration_fee}}</p>
+                        <p><strong>CNPJ: </strong>{{dados.cnpj}}</p>
+                        <p><strong>Gestor do fundo: </strong>{{dados.fund_manager.full_name}}</p>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- <table class="orama-table">
                   <tr>
                     <td colspan="5">{{dados.description.strategy}}</td>
                   </tr>
@@ -153,7 +181,7 @@
                     <td><strong>Taxa de administração: </strong>{{dados.fees.administration_fee}}</td>
                     <td><strong>CNPJ: </strong>{{dados.cnpj}}</td>
                   </tr>
-                </table>
+                </table> -->
               </mat-expansion-panel>
             </mat-accordion>
           </td>

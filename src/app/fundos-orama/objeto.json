@@ -1,0 +1,48 @@
+{
+  "fees": {
+    "administration_fee": "1,00%"
+  },
+  "operability": {
+    "retrieval_quotation_days_type": "corridos",
+    "minimum_initial_application_amount": "15000.00",
+    "application_quotation_days_str": "D+0",
+    "retrieval_liquidation_days_str": "D+1 da data de conversão de resgate"
+  },
+  "specification": {
+    "fund_suitability_profile": {
+      "score_range_order": 2,
+      "name": "Moderado"
+    },
+    "fund_risk_profile": {
+      "score_range_order": 8
+    },
+    "fund_macro_strategy": {
+      "id": 1,
+      "name": "Renda Fixa"
+    },
+    "fund_class_anbima": "Fundos sem o compromisso de seguir qualquer estratégia específica.",
+    "fund_main_strategy": {
+      "fund_macro_strategy": 1,
+      "id": 32, 
+      "name": "Cotas de FIDCs Próprios" 
+    }
+  },
+  "quota_date": "2020-07-16",
+  "cnpj": "22.652.091/0001-82",
+  "description": {
+    "strengths": "A tese de investimento está associada às incertezas da economia de curto e médio prazos, com reflexo direto no comportamento do IPCA. Por isso, é uma alternativa de diversificação de longo prazo.",
+    "strategy": "Fundo que investe em cotas de FIDCs Próprios, com meta de retorno IPCA + 8,5% ao ano. O Fundo investe em uma carteira de FIDCs com lastros em contratos de financiamento e refinanciamento (home equity) imobiliários.  A seleção dos ativos é realizada com base em análises do histórico de carteiras diversificadas de crédito, DA ESTRUTURA LEGAL, OPERACIONAL E FINANCEIRA DE CADA PRODUTO, além de estrutura de governança."
+  },
+  "fund_situation": {
+    "code": "1"
+  },
+  "profitabilities": {
+    "month": "0.002875",
+    "m12": "0.089212",
+    "year": "0.048787",
+    "fund_manager": {
+      "id": 27,
+      "full_name": "Empírica Investimentos Gestão De Recursos Ltda."
+    }
+  }
+}

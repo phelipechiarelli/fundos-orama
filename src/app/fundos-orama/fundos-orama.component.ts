@@ -1,3 +1,4 @@
+import { ListaFundosModel } from 'src/app/model/lista-fundos.model';
 import { Component, OnInit } from '@angular/core';
 import { ListaFundosService } from 'src/services/lista-fundos.service';
 
@@ -8,7 +9,8 @@ import { ListaFundosService } from 'src/services/lista-fundos.service';
 })
 export class FundosOramaComponent implements OnInit {
 
-  listaFundos: ListaFundosService[] = [];
+  listaFundos: ListaFundosModel[] = [];
+  pesquisa: string;
   err: any;
 
  
@@ -18,8 +20,6 @@ export class FundosOramaComponent implements OnInit {
    }
 
   ngOnInit() {
-
-    this.pesquisaFundos()
 
   }
 
@@ -74,11 +74,9 @@ export class FundosOramaComponent implements OnInit {
     }
   }
 
-  pesquisaFundos(){
-
-    // const nomeFundo = this.listaFundos.filter(nome => (nome.full_name))
-
-    // console.log(nomeFundo)
+  pesquisar(data){
+    console.log(data)
   }
+
 
 }

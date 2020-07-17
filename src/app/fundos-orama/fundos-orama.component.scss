@@ -65,7 +65,8 @@ mat-expansion-panel-header {
   padding: 0 10px;
 }
 
-mat-panel-title {
+mat-panel-title,
+mat-checkbox {
   font-family: 'Questrial', sans-serif !important;
   font-size: 13px !important;
 
