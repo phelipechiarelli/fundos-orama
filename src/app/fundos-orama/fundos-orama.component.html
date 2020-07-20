@@ -135,9 +135,9 @@
                     <strong>Mais detalhes sobre {{dados.simple_name}}</strong>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div class="grid-x orama-body">
-                  <div class="large-6 medium-6 columns padding-1">
-                    <div class="card">
+                <div class="grid-x">
+                  <div class="large-6 medium-6 small-12 columns">
+                    <div class="card orama-card">
                       <div class="card-section">
                         <p>{{dados.description.strategy}}</p>
                         <p>{{dados.description.strengths}}</p>
@@ -145,11 +145,13 @@
                     </div>
                   </div>
 
-                  <div class="large-6 medium-6 columns padding-1">
-                                        <div class="card">
+                  <div class="large-6 medium-6 small-12 columns">
+                    <div class="card orama-card">
                       <div class="card-section">
-                        <p><strong>Cotização da aplicação: </strong>{{dados.operability.application_quotation_days_str}}</p> 
-                        <p><strong>Cotização do resgate: </strong>{{dados.operability.retrieval_quotation_days_str}} (dias
+                        <p><strong>Cotização da aplicação: </strong>{{dados.operability.application_quotation_days_str}}
+                        </p>
+                        <p><strong>Cotização do resgate: </strong>{{dados.operability.retrieval_quotation_days_str}}
+                          (dias
                           {{dados.operability.retrieval_quotation_days_type}})</p>
                         <p><strong>Liquidação do resgate: </strong>{{dados.operability.retrieval_liquidation_days_str}}
                           (dias
@@ -157,12 +159,12 @@
                         <p><strong>Taxa de administração: </strong>{{dados.fees.administration_fee}}</p>
                         <p><strong>CNPJ: </strong>{{dados.cnpj}}</p>
                         <p><strong>Gestor do fundo: </strong>{{dados.fund_manager.full_name}}</p>
-                        
+
                       </div>
                     </div>
                   </div>
                 </div>
-                
+
                 <!-- <table class="orama-table">
                   <tr>
                     <td colspan="5">{{dados.description.strategy}}</td>

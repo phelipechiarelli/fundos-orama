@@ -1,4 +1,4 @@
-$card-color: #F8F8FF; // ghostWhite
+$card-color: #FFF; // ghostWhite
 $table-hover: #d4ebfa; // azure 
 $table-header: #FFF; // White
 $table-body: #FFF; // White
@@ -55,7 +55,7 @@ mat-expansion-panel {
   border-radius: 0px !important;
 
   &:hover {
-    background-color: $table-hover;
+    border-color: $table-hover;
     cursor: pointer;
   }
 
@@ -70,6 +70,11 @@ mat-checkbox {
   font-family: 'Questrial', sans-serif !important;
   font-size: 13px !important;
 
+}
+
+.orama-card {
+  border: none;
+  background-color: $card-color;
 }
 
 .fundos {
