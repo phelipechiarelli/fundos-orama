@@ -1,6 +1,11 @@
 import { ListaFundosModel } from 'src/app/model/lista-fundos.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ListaFundosService } from 'src/services/lista-fundos.service';
+import { filter, reduce} from 'rxjs/operators';
+import { FundMainStrategyModel } from '../model/fund-main-strategy.model';
+
+
+
 
 @Component({
   selector: 'app-fundos-orama',
@@ -9,27 +14,63 @@ import { ListaFundosService } from 'src/services/lista-fundos.service';
 })
 export class FundosOramaComponent implements OnInit {
 
-  listaFundos: ListaFundosModel[] = [];
-  pesquisa: string;
+  listaFundos: ListaFundosModel[];
+  pesquisa2: string = '';
   err: any;
+  values: string = '';
+  listaFundosConst: ListaFundosModel[];
+  listaTipoFundos: FundMainStrategyModel[] = [];
 
- 
+  screen: boolean;
+  
+  @ViewChild('pesquisa') paramPesquisa: ElementRef;
+   
   constructor(private fundosService: ListaFundosService) {
 
     this.getListaFundos();
+    this.checkScreenSize();
+    
    }
 
-  ngOnInit() {
+  ngOnInit() {       
 
+  
   }
+
+
+  checkScreenSize(){
+    if (window.screen.availWidth < 850) {
+      this.screen = true; // dimensão de tela acima de 850px      
+    } else {
+      this.screen = false; // dimensão de tela abaixo de 850px
+      
+    }
+    console.log('checkScreenSize:' + this.screen);  
+  }
+
+  
+  onResize(event) {    
+    event.target.innerWidth;
+    if (event.target.innerWidth < 850) {
+      this.screen = true; // dimensão de tela acima de 850px
+    } else {
+      this.screen = false; // dimensão de tela abaixo de 850px
+    }
+    console.log('onResize: ' +this.screen);
+  }
+  
 
   getListaFundos(){
     this.fundosService.getListaFundos().subscribe(
       (dadosFundos) => {
-        this.listaFundos = dadosFundos;
+        this.listaFundosConst = dadosFundos;
+        this.listaFundos = this.listaFundosConst;
         console.log(this.listaFundos);
-
-
+        this.listaTipoFundos = Array.from(this.listaFundosConst.filter(data => { 
+         return data.specification.fund_macro_strategy.id === 1
+        }).reduce((m, t) => m.set(t.specification.fund_main_strategy.name, t.specification.fund_main_strategy), new Map()).values()); 
+        console.log(this.listaTipoFundos);
+        console.log(this.pesquisa2);
       },
       (error: any) => {
         this.err = error;
@@ -73,10 +114,4 @@ export class FundosOramaComponent implements OnInit {
       default : {return 'card'};
     }
   }
-
-  pesquisar(data){
-    console.log(data)
-  }
-
-
 }

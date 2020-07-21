@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { ListaFundosModel } from 'src/app/model/lista-fundos.model';
 
 @Injectable({
   providedIn: 'root'
