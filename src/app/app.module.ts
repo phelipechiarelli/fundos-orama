@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {   AccordionModule,
+import { FormsModule } from '@angular/forms'
+ import {
+  AccordionModule,
   AlertModule,        // Foundation Callouts
   ButtonsModule,
   CarouselModule,     // Foundation Orbit
@@ -19,23 +20,22 @@ import {   AccordionModule,
   TabsModule,
   TimepickerModule,
   TooltipModule,
-  TypeaheadModule, } from 'ngx-foundation';
+  TypeaheadModule,
+} from 'ngx-foundation';
 import { FundosOramaComponent } from './fundos-orama/fundos-orama.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatDividerModule} from '@angular/material/divider';
-import { GroupByPipe } from './groupBy.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FundosOramaComponent,
-    GroupByPipe
+    FundosOramaComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +64,8 @@ import { GroupByPipe } from './groupBy.pipe';
     MatInputModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule 
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

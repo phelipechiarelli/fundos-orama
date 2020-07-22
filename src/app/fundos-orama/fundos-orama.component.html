@@ -1,4 +1,4 @@
-<div class="grid-x orama-body orama-div-h">
+<div class="grid-x orama-body orama-div-h" (window:resize)="onResize($event)">
   <div class="large-12 medium-12 small-12 orama-header">
     <div class="cell orama-text-header orama-text-header_mobile">
       <p class="margin-0">FUNDOS DE INVESTIMENTO<br>
@@ -67,17 +67,17 @@
 
     <div class="large-12 medium-12 small-12 columns">
       <div class="card">
+
         <mat-form-field appearance="legacy">
-          <mat-label>Buscar fundo por nome</mat-label>
-          <input name="pesquisarNome" matInput (change)="pesquisar($event)">
-          <button mat-icon-button matSuffix>
-            <mat-icon>search</mat-icon>
-          </button>
+          <mat-label>Buscar fundo por nome</mat-label>          
+          <input #pesquisa name="pesquisa" matInput [(ngModel)]="pesquisa2">          
+            <mat-icon matSuffix>search</mat-icon>          
         </mat-form-field>
-      </div>
+
+    </div>
     </div>
 
-    <table class="orama-table hide-mobile">
+    <table id="tableDesktop" class="orama-table" *ngIf="this.screen === false">
       <thead>
         <tr>
           <th></th>
@@ -96,9 +96,7 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-
-
-      <!-- <tbody *ngFor="let dados of listaFundos">
+     <tbody *ngFor="let dados of listaFundos | filter : pesquisa2">
         <tr [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
           <td id="indicadoresFundos">
             <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '1'">
@@ -165,20 +163,18 @@
                       </div>
                     </div>
                   </div>
-                </div>          
+                </div>
               </mat-expansion-panel>
             </mat-accordion>
           </td>
         </tr>
-      </tbody> -->
+      </tbody>
     </table>
 
-    <div class="large-12 medium-12 small-12 columns" *ngFor="let dados of listaFundos | groupBy: 'specification.fund_main_strategy.id'">
+    <span *ngIf="this.screen === true">
+    <div class="large-12 medium-12 small-12 columns" *ngFor="let dados of listaFundos  | filter : pesquisa2">
+      <div [ngClass]="mapperFundosRiscoMobile(dados.specification.fund_risk_profile.score_range_order)">
 
-      <ul >
-        <li>{{dados.specification.fund_main_strategy.id}} - {{dados.specification.fund_main_strategy.name}}</li>
-      </ul>
-      <!-- <div [ngClass]="mapperFundosRiscoMobile(dados.specification.fund_risk_profile.score_range_order)">
         <div class="card-section">
           <div class="grid-x grid-padding-x padding-bottom-1">
             <div class="cell small-10 legenda flex-container">
@@ -206,14 +202,15 @@
 
       </div> -->
     </div>
+    </span>
   </div>
 
-  <div class="large-3 medium-3 small-12 columns padding-right-1 padding-top-1 hide-mobile">
+  <div class="large-3 medium-3 small-12 columns padding-right-1 padding-top-1" *ngIf="this.screen === false">
     <div class="card">
       <div class="card-section">
         <ul>
           <li>
-            <mat-checkbox color="primary"> <strong>RENDA FIXA</strong></mat-checkbox>
+            <mat-checkbox color="primary"><strong>RENDA FIXA</strong></mat-checkbox>
           </li>
         </ul>
       </div>
@@ -221,25 +218,9 @@
       <div class="card-section">
         <span>
           <ul>
-            <li>
-              <mat-checkbox color="primary">Indexado Soberano</mat-checkbox>
-            </li>
-            <li>
-              <mat-checkbox color="primary">Renda Fixa</mat-checkbox>
-            </li>
-            <li>
-              <mat-checkbox color="primary">Renda Fixa Crédito Privado</mat-checkbox>
-            </li>
-            <li>
-              <mat-checkbox color="primary">Crédito Privado High Yield</mat-checkbox>
-            </li>
-            <li>
-              <mat-checkbox color="primary">Renda Fixa Inflação Soberano
-              </mat-checkbox>
-            </li>
-            <li>
-              <mat-checkbox color="primary">Inflação Crédito Privado</mat-checkbox>
-            </li>
+            <li *ngFor="let fundos of listaTipoFundos">
+              <mat-checkbox value="{{fundos.id}}" color="primary">{{fundos.name}}</mat-checkbox>
+            </li>            
           </ul>
         </span>
       </div>
