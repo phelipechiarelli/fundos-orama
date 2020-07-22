@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'
@@ -32,7 +31,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -67,7 +65,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatCheckboxModule,
     MatExpansionModule,
     MatDividerModule,
-    Ng2SearchPipeModule,
     FormsModule 
   ],
   providers: [HttpClient],
