@@ -29,11 +29,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
+import { GroupByPipe } from './groupBy.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FundosOramaComponent
+    FundosOramaComponent,
+    GroupByPipe
   ],
   imports: [
     BrowserModule,
