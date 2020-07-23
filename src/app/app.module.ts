@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms'
@@ -31,11 +31,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatButtonModule} from '@angular/material/button';
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FundosOramaComponent
+
   ],
   imports: [
     BrowserModule,
@@ -65,9 +72,12 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCheckboxModule,
     MatExpansionModule,
     MatDividerModule,
-    FormsModule 
+    MatButtonModule,
+    FormsModule,
+    Ng2SearchPipeModule
+    
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

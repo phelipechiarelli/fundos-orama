@@ -180,6 +180,7 @@ mat-checkbox {
   i {
     font-size: 22px;
   }
+
 }
 
 .risco-1 {
@@ -281,7 +282,7 @@ mat-checkbox {
   h1,
   h2,
   h3 {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Questrial', sans-serif !important;
   }
 
   .icon-gold {
@@ -309,7 +310,7 @@ mat-checkbox {
   }
 
   p {
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Questrial', sans-serif;    
   }
 
   mat-form-field {
@@ -434,6 +435,11 @@ mat-checkbox {
     }
   }
 
+  .fontForMobile { 
+      font-size: 11px !important; 
+      padding-left: 10px;
+  }
+
   #indicadoresFundos {
     p>i {
       font-size: 20px;
@@ -519,6 +525,11 @@ mat-checkbox {
     background-color: #babaca;
     color: #000;
     font-weight: bold;
+  }
+
+  .large-button{
+    display: inline-block;
+    width: 100%;
   }
 
 }

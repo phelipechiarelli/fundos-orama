@@ -1,10 +1,7 @@
 import { ListaFundosModel } from 'src/app/model/lista-fundos.model';
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ListaFundosService } from 'src/services/lista-fundos.service';
-import { filter, reduce} from 'rxjs/operators';
 import { FundMainStrategyModel } from '../model/fund-main-strategy.model';
-
-
 
 
 @Component({
@@ -15,41 +12,38 @@ import { FundMainStrategyModel } from '../model/fund-main-strategy.model';
 export class FundosOramaComponent implements OnInit {
 
   listaFundos: ListaFundosModel[];
-  pesquisa2: string = '';
+  paramPesquisa: string = '';
+  paramFiltro: number;
   err: any;
   values: string = '';
   listaFundosConst: ListaFundosModel[];
   listaTipoFundos: FundMainStrategyModel[] = [];
 
   screen: boolean;
-  
-  @ViewChild('pesquisa') paramPesquisa: ElementRef;
-   
+
   constructor(private fundosService: ListaFundosService) {
 
-    this.getListaFundos();
     this.checkScreenSize();
-    
+    this.getListaFundos();
+
    }
 
-  ngOnInit() {       
+  ngOnInit() {
 
-  
   }
-
 
   checkScreenSize(){
     if (window.screen.availWidth < 850) {
-      this.screen = true; // dimensão de tela acima de 850px      
+      this.screen = true; // dimensão de tela acima de 850px
     } else {
       this.screen = false; // dimensão de tela abaixo de 850px
-      
+
     }
-    console.log('checkScreenSize:' + this.screen);  
+    console.log('checkScreenSize:' + this.screen);
   }
 
-  
-  onResize(event) {    
+
+  onResize(event) {
     event.target.innerWidth;
     if (event.target.innerWidth < 850) {
       this.screen = true; // dimensão de tela acima de 850px
@@ -58,7 +52,7 @@ export class FundosOramaComponent implements OnInit {
     }
     console.log('onResize: ' +this.screen);
   }
-  
+
 
   getListaFundos(){
     this.fundosService.getListaFundos().subscribe(
@@ -66,11 +60,12 @@ export class FundosOramaComponent implements OnInit {
         this.listaFundosConst = dadosFundos;
         this.listaFundos = this.listaFundosConst;
         console.log(this.listaFundos);
-        this.listaTipoFundos = Array.from(this.listaFundosConst.filter(data => { 
-         return data.specification.fund_macro_strategy.id === 1
-        }).reduce((m, t) => m.set(t.specification.fund_main_strategy.name, t.specification.fund_main_strategy), new Map()).values()); 
+
+        this.listaTipoFundos = Array.from(this.listaFundosConst.filter(data =>
+          { return data.specification.fund_macro_strategy.id === 1 }).reduce((m, t) => m.set(t.specification.fund_main_strategy.name, t.specification.fund_main_strategy), new Map()).values());
         console.log(this.listaTipoFundos);
-        console.log(this.pesquisa2);
+        console.log(this.paramPesquisa);
+        console.log(this.paramFiltro);
       },
       (error: any) => {
         this.err = error;
@@ -79,7 +74,7 @@ export class FundosOramaComponent implements OnInit {
     )
   }
 
-  mapperFundosRisco(valor: number) {    
+  mapperFundosRisco(valor: number) {
     switch (valor) {
       case 1 : {return 'fundos risco-1'};
       case 2 : {return 'fundos risco-2'};
@@ -97,7 +92,7 @@ export class FundosOramaComponent implements OnInit {
     }
   }
 
-  mapperFundosRiscoMobile(valor: number) {    
+  mapperFundosRiscoMobile(valor: number) {
     switch (valor) {
       case 1 : {return 'card risco-mobile-1'};
       case 2 : {return 'card risco-mobile-2'};

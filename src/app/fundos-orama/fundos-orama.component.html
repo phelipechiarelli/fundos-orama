@@ -10,7 +10,6 @@
 
 <div class="grid-x orama-body">
   <div class="large-9 medium-9 small-12 columns padding-1">
-
     <div class="large-12 medium-12 small-12 columns hide-mobile">
       <div class="card">
         <div class="float-left padding-1"><strong>LEGENDA</strong></div>
@@ -32,7 +31,7 @@
             <span class="flex-dir-row align-self-middle">Fundo fechado para aplicação</span>
           </div>
           <div class="cell small-4 legenda flex-container"><i
-              class="material-icons md-12 icon-red padding-right-1">&#xe80e;</i>
+              class="material-icons md-12 icon-red padding-right-1">&#xe895;</i>
             <span class="flex-dir-row align-self-middle">Aplicar neste fundo</span></div>
         </div>
       </div>
@@ -59,7 +58,7 @@
             <span class="flex-dir-row align-self-middle">Fundo fechado para aplicação</span>
           </div>
           <div class="cell small-12 legenda flex-container"><i
-              class="material-icons md-12 icon-red padding-right-1">&#xe80e;</i>
+              class="material-icons md-12 icon-red padding-right-1">&#xe895;</i>
             <span class="flex-dir-row align-self-middle">Aplicar neste fundo</span></div>
         </div>
       </div>
@@ -69,9 +68,9 @@
       <div class="card">
 
         <mat-form-field appearance="legacy">
-          <mat-label>Buscar fundo por nome</mat-label>          
-          <input #pesquisa name="pesquisa" matInput [(ngModel)]="pesquisa2">          
-            <mat-icon matSuffix>search</mat-icon>          
+          <mat-label>Buscar fundo por nome</mat-label>
+          <input #pesquisa name="pesquisa" matInput [(ngModel)]="paramPesquisa">
+            <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
 
     </div>
@@ -84,7 +83,7 @@
           <th class="padding-left-1" width="300">Fundo</th>
           <th class="padding-0 text-center" width="100">Data da cota</th>
           <th class="padding-0 text-center" colspan="3">Rentabilidade(%)</th>
-          <th class="padding-0 text-right" width="100">Aplicação mínima(R$)</th>
+          <th class="padding-0 text-right" width="100">Aplicação mínima</th>
           <th class="padding-0 text-right" width="100">Cotização de resgate</th>
           <th class="padding-0 text-center">Aplicar</th>
         </tr>
@@ -96,7 +95,7 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-     <tbody *ngFor="let dados of listaFundos | filter : pesquisa2">
+     <tbody *ngFor="let dados of listaFundos | filter : paramPesquisa">
         <tr [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
           <td id="indicadoresFundos">
             <p class="padding-0 margin-0 text-center" *ngIf="dados.fund_situation.code === '1'">
@@ -118,13 +117,13 @@
             </p>
           </td>
           <td class="text-center" width="100">{{dados.quota_date | date: 'dd/MM/yyyy'}}</td>
-          <td class="text-right">{{dados.profitabilities.month}}</td>
-          <td class="text-right">{{dados.profitabilities.year}}</td>
-          <td class="text-right">{{dados.profitabilities.m12}}</td>
-          <td class="text-right" width="100">{{dados.operability.minimum_initial_application_amount}}</td>
+          <td class="text-right">{{dados.profitabilities.month | percent}}</td>
+          <td class="text-right">{{dados.profitabilities.year | percent}}</td>
+          <td class="text-right">{{dados.profitabilities.m12 | percent}}</td>
+          <td class="text-right" width="100">{{dados.operability.minimum_initial_application_amount | currency:'BRL': 'symbol'}}</td>
           <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip"
               [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
-          <td class="text-center"><i class="material-icons padding-right-1 icon-red">&#xe80e;</i></td>
+          <td class="text-center"><i class="material-icons padding-right-1 icon-red">&#xe895;</i></td>
         </tr>
         <tr id="collapse" [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
           <td colspan="9" class="margin-0 padding-0">
@@ -172,11 +171,11 @@
     </table>
 
     <span *ngIf="this.screen === true">
-    <div class="large-12 medium-12 small-12 columns" *ngFor="let dados of listaFundos  | filter : pesquisa2">
+    <div class="large-12 medium-12 small-12 columns" *ngFor="let dados of listaFundos  | filter : paramPesquisa">
       <div [ngClass]="mapperFundosRiscoMobile(dados.specification.fund_risk_profile.score_range_order)">
 
         <div class="card-section">
-          <div class="grid-x grid-padding-x padding-bottom-1">
+          <div class="grid-x grid-padding-x">
             <div class="cell small-10 legenda flex-container">
               <p class="padding-top-0">{{dados.simple_name}}<br>
                 <small>{{dados.specification.fund_macro_strategy.name}} |
@@ -196,11 +195,25 @@
                   placement="right">&#xe8d0;</i></p>
             </div>
           </div>
-          <div class="card-section"></div>
+          <div class="card-section fontForMobile">
+            <p><strong>Data da cota: </strong>{{dados.quota_date | date: 'dd/MM/yyyy'}}
+            </p>
+            <p><strong>Rentabilidade 12M: </strong>{{dados.profitabilities.m12}}
+            </p>
+            <p><strong>Aplicação mínima: </strong>{{dados.operability.minimum_initial_application_amount | currency:'BRL':true}}
+           </p>
+            <p><strong>Cotização do resgate: </strong>{{dados.operability.retrieval_quotation_days_str}}
+            </p>
+          </div>
+          <div class="card-section">
+            <button class="large-button" mat-raised-button color="primary">Aplicar
+              <i class="material-icons padding-right-1">&#xe895;</i>
+            </button>
+          </div>
 
         </div>
 
-      </div> -->
+      </div>
     </div>
     </span>
   </div>
@@ -219,8 +232,8 @@
         <span>
           <ul>
             <li *ngFor="let fundos of listaTipoFundos">
-              <mat-checkbox value="{{fundos.id}}" color="primary">{{fundos.name}}</mat-checkbox>
-            </li>            
+              <mat-checkbox value="{{fundos.id}}" color="primary" [(ngModel)]="paramFiltro">{{fundos.name}}</mat-checkbox>
+            </li>
           </ul>
         </span>
       </div>
