@@ -132,7 +132,7 @@
           <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip"
               [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
           <td class="text-center">
-            <button mat-mini-fab color="primary" (click)="confirmModal()"><i class="material-icons text-center">&#xe895;</i></button>
+            <button mat-mini-fab color="primary" (click)="accountModal()"><i class="material-icons text-center">&#xe895;</i></button>
           </td>
         </tr>
         <tr id="collapse" [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
@@ -216,7 +216,7 @@
               </p>
             </div>
             <div class="card-section">
-              <button class="large-button" mat-raised-button color="primary">Aplicar
+              <button class="large-button" mat-raised-button color="primary" (click)="accountModal()">Aplicar
                 <i class="material-icons padding-right-1">&#xe895;</i>
               </button>
             </div>

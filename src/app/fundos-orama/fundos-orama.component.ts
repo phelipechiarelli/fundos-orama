@@ -34,7 +34,7 @@ export class FundosOramaComponent implements OnInit {
 
   }
 
-  confirmModal() {
+  accountModal() {
     this.messageService.confirm(
       'Para aplicar neste Fundo, faça o seu cadastro online e sem custo.',
       'Já é cadastrado? Acesse sua conta.',

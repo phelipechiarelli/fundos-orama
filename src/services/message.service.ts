@@ -11,6 +11,7 @@ export class MessageService {
     private bsModalService: BsModalService,
   ) { }
 
+
   confirm(title: string, message: string, options: string[]): Observable<string> {
     const initialState = {
       title: title,
