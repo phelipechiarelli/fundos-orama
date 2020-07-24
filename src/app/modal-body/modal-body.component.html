@@ -1,0 +1,18 @@
+<button class="close-button" (click)="closeModal()" aria-label="Close modal" type="button">
+  <span aria-hidden="true">&times;</span>
+</button>
+<div class="row">
+  <p class="text-center">{{title}}</p>
+  <div class=" mx-auto">
+    <button type="button" class="button warning text-white" (click)="closeModal()">CADASTRE-SE</button>
+  </div>
+  <!-- <p class="text-center">{{message}}</p> -->
+  <p class="text-center">Já é cadastrado? <a href="" (click)="closeModal()">Acesse sua conta.</a> </p>
+</div>
+
+<!-- <div *ngIf="options.length">
+  <div class="button-group">
+    <button type="button" class="button secondary" (click)="closeModal()">{{options[0]}}</button>
+    <button type="button" class="button primary" (click)="closeModal()">{{options[1]}}</button>
+  </div>
+</div> -->

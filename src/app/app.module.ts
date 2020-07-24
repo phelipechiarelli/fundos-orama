@@ -35,13 +35,16 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {MatButtonModule} from '@angular/material/button';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { ModalBodyComponent } from './modal-body/modal-body.component';
+import { MessageService } from 'src/services/message.service';
 registerLocaleData(ptBr);
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FundosOramaComponent
+    FundosOramaComponent,
+    ModalBodyComponent
 
   ],
   imports: [
@@ -75,9 +78,14 @@ registerLocaleData(ptBr);
     MatButtonModule,
     FormsModule,
     Ng2SearchPipeModule
-    
+
   ],
-  providers: [HttpClient, {provide: LOCALE_ID, useValue: 'pt-BR'}],
-  bootstrap: [AppComponent]
+  providers: [HttpClient,
+              MessageService,
+              {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ModalBodyComponent
+  ]
 })
 export class AppModule { }

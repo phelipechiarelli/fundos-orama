@@ -2,6 +2,7 @@ import { ListaFundosModel } from 'src/app/model/lista-fundos.model';
 import { Component, OnInit } from '@angular/core';
 import { ListaFundosService } from 'src/services/lista-fundos.service';
 import { FundMainStrategyModel } from '../model/fund-main-strategy.model';
+import { MessageService } from 'src/services/message.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class FundosOramaComponent implements OnInit {
 
   screen: boolean;
 
-  constructor(private fundosService: ListaFundosService) {
+  constructor(private fundosService: ListaFundosService, private messageService: MessageService) {
 
     this.checkScreenSize();
     this.getListaFundos();
@@ -32,6 +33,14 @@ export class FundosOramaComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  confirmModal() {
+    this.messageService.confirm(
+      'Para aplicar neste Fundo, faça o seu cadastro online e sem custo.',
+      'Já é cadastrado? Acesse sua conta.',
+      ['Yes', 'No']);
+  }
+
 
   checkScreenSize() {
     if (window.screen.availWidth < 850) {

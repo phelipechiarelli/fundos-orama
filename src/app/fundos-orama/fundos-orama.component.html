@@ -131,7 +131,9 @@
             {{dados.operability.minimum_initial_application_amount | currency:'BRL': 'symbol'}}</td>
           <td class="text-right" width="100"><i class="material-icons md-12 icon-cyan has-tip"
               [tooltip]="dados.operability.retrieval_quotation_days_str">&#xe88f;</i></td>
-          <td class="text-center"><i class="material-icons padding-right-1 icon-blue">&#xe895;</i></td>
+          <td class="text-center">
+            <button mat-mini-fab color="primary" (click)="confirmModal()"><i class="material-icons text-center">&#xe895;</i></button>
+          </td>
         </tr>
         <tr id="collapse" [ngClass]="mapperFundosRisco(dados.specification.fund_risk_profile.score_range_order)">
           <td colspan="9" class="margin-0 padding-0">
@@ -228,7 +230,7 @@
 
   <div class="large-3 medium-3 small-12 columns padding-right-1 padding-top-1" *ngIf="this.screen === false">
 
-    <mat-expansion-panel>
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <strong>RENDA FIXA</strong>
@@ -245,3 +247,4 @@
     </mat-expansion-panel>
   </div>
 </div>
+
